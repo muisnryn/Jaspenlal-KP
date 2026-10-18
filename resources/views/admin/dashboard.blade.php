@@ -2,43 +2,71 @@
 
 @section('content')
 <div class="container-fluid py-4 px-md-4">
-    {{-- BARIS 1: WIDGET STATISTIK (Tetap sama) --}}
-    <div class="row g-3 mb-4">
-        {{-- ... Kode statistik Anda sebelumnya ... --}}
-        <div class="col-md-2">
-            <div class="card border-0 shadow-sm rounded-4 text-center p-3 h-100 border-bottom border-primary border-4">
-                <div class="text-primary mb-2"><i class="fas fa-user-tag fa-lg"></i></div>
-                <div class="small fw-bold text-muted text-uppercase">Plotting</div>
-                <h3 class="fw-bold mb-0 text-dark">{{ $stats['pending_plotting'] ?? 0 }}</h3>
-            </div>
+    <div class="row row-cols-2 row-cols-md-3 row-cols-xl-5 g-3 mb-4 admin-metrics">
+        <div class="col">
+            <article class="card admin-metric-card admin-metric-card--plotting h-100">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="admin-metric-icon"><i class="fas fa-user-tag"></i></div>
+                    <span class="admin-metric-kicker">OPERASIONAL</span>
+                </div>
+                <div class="mt-4">
+                    <p class="admin-metric-label mb-1">Antrean Plotting</p>
+                    <p class="admin-metric-value mb-2">{{ $stats['pending_plotting'] ?? 0 }}</p>
+                    <p class="admin-metric-caption mb-0">Menunggu penugasan konsultan</p>
+                </div>
+            </article>
         </div>
-        <div class="col-md-2">
-            <div class="card border-0 shadow-sm rounded-4 text-center p-3 h-100 border-bottom border-warning border-4">
-                <div class="text-warning mb-2"><i class="fas fa-gavel fa-lg"></i></div>
-                <div class="small fw-bold text-muted text-uppercase">Sidang</div>
-                <h3 class="fw-bold mb-0 text-dark">{{ $stats['pending_sidang'] ?? 0 }}</h3>
-            </div>
+        <div class="col">
+            <article class="card admin-metric-card admin-metric-card--sidang h-100">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="admin-metric-icon"><i class="fas fa-gavel"></i></div>
+                    <span class="admin-metric-kicker">OPERASIONAL</span>
+                </div>
+                <div class="mt-4">
+                    <p class="admin-metric-label mb-1">Menunggu Sidang</p>
+                    <p class="admin-metric-value mb-2">{{ $stats['pending_sidang'] ?? 0 }}</p>
+                    <p class="admin-metric-caption mb-0">Dalam antrean sidang fatwa</p>
+                </div>
+            </article>
         </div>
-        <div class="col-md-2">
-            <div class="card border-0 shadow-sm rounded-4 text-center p-3 h-100 border-bottom border-success border-4">
-                <div class="text-success mb-2"><i class="fas fa-certificate fa-lg"></i></div>
-                <div class="small fw-bold text-muted text-uppercase">Terbit</div>
-                <h3 class="fw-bold mb-0 text-dark">{{ $stats['pending_sertifikat'] ?? 0 }}</h3>
-            </div>
+        <div class="col">
+            <article class="card admin-metric-card admin-metric-card--certificate h-100">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="admin-metric-icon"><i class="fas fa-certificate"></i></div>
+                    <span class="admin-metric-kicker">SERTIFIKASI</span>
+                </div>
+                <div class="mt-4">
+                    <p class="admin-metric-label mb-1">Siap Terbit</p>
+                    <p class="admin-metric-value mb-2">{{ $stats['pending_sertifikat'] ?? 0 }}</p>
+                    <p class="admin-metric-caption mb-0">Menunggu sertifikat final</p>
+                </div>
+            </article>
         </div>
-        <div class="col-md-3">
-            <div class="card border-0 shadow-sm rounded-4 text-center p-3 h-100 bg-danger-soft border-bottom border-danger border-4">
-                <div class="text-danger mb-2"><i class="fas fa-times-circle fa-lg"></i></div>
-                <div class="small fw-bold text-muted text-uppercase">Pendaftaran Ditolak</div>
-                <h3 class="fw-bold mb-0 text-danger">{{ $stats['total_ditolak'] ?? 0 }}</h3>
-            </div>
+        <div class="col">
+            <article class="card admin-metric-card admin-metric-card--rejected h-100">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="admin-metric-icon"><i class="fas fa-circle-exclamation"></i></div>
+                    <span class="admin-metric-kicker">PERLU DITINJAU</span>
+                </div>
+                <div class="mt-4">
+                    <p class="admin-metric-label mb-1">Pendaftaran Ditolak</p>
+                    <p class="admin-metric-value mb-2">{{ $stats['total_ditolak'] ?? 0 }}</p>
+                    <p class="admin-metric-caption mb-0">Periksa alasan penolakan</p>
+                </div>
+            </article>
         </div>
-        <div class="col-md-3">
-            <div class="card border-0 shadow-sm rounded-4 text-center p-3 h-100">
-                <div class="text-dark mb-2"><i class="fas fa-users fa-lg"></i></div>
-                <div class="small fw-bold text-muted text-uppercase">Total Klien</div>
-                <h3 class="fw-bold mb-0">{{ $stats['total_klien'] ?? 0 }}</h3>
-            </div>
+        <div class="col">
+            <article class="card admin-metric-card admin-metric-card--clients h-100">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div class="admin-metric-icon"><i class="fas fa-users"></i></div>
+                    <span class="admin-metric-kicker">JARINGAN</span>
+                </div>
+                <div class="mt-4">
+                    <p class="admin-metric-label mb-1">Total Klien</p>
+                    <p class="admin-metric-value mb-2">{{ $stats['total_klien'] ?? 0 }}</p>
+                    <p class="admin-metric-caption mb-0">Klien terdaftar di sistem</p>
+                </div>
+            </article>
         </div>
     </div>
 
@@ -168,6 +196,62 @@
 @endforeach
 
 <style>
+    .admin-metric-card {
+        --metric-accent: #2563eb;
+        --metric-tint: #eff6ff;
+        min-height: 190px;
+        padding: 1.15rem;
+        border: 1px solid #e9eef3;
+        border-radius: 1rem;
+        background: linear-gradient(145deg, #fff 70%, var(--metric-tint));
+        box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+        transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+    .admin-metric-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px rgba(15, 23, 42, 0.09);
+    }
+    .admin-metric-card--plotting { --metric-accent: #2563eb; --metric-tint: #eff6ff; }
+    .admin-metric-card--sidang { --metric-accent: #d97706; --metric-tint: #fffbeb; }
+    .admin-metric-card--certificate { --metric-accent: #059669; --metric-tint: #ecfdf5; }
+    .admin-metric-card--rejected { --metric-accent: #dc3545; --metric-tint: #fff1f2; }
+    .admin-metric-card--clients { --metric-accent: #475569; --metric-tint: #f1f5f9; }
+    .admin-metric-icon {
+        display: grid;
+        width: 2.65rem;
+        height: 2.65rem;
+        place-items: center;
+        border-radius: 0.85rem;
+        background: var(--metric-tint);
+        color: var(--metric-accent);
+        font-size: 1.05rem;
+    }
+    .admin-metric-kicker {
+        padding: 0.35rem 0.5rem;
+        border-radius: 999px;
+        background: var(--metric-tint);
+        color: var(--metric-accent);
+        font-size: 0.55rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+    }
+    .admin-metric-label {
+        color: #475569;
+        font-size: 0.78rem;
+        font-weight: 700;
+    }
+    .admin-metric-value {
+        color: #172033;
+        font-size: clamp(1.8rem, 2.5vw, 2.15rem);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: -0.04em;
+    }
+    .admin-metric-card--rejected .admin-metric-value { color: var(--metric-accent); }
+    .admin-metric-caption {
+        color: #8490a0;
+        font-size: 0.68rem;
+    }
     .fw-800 { font-weight: 800; }
     .bg-danger-soft { background-color: rgba(220, 53, 69, 0.08); }
     .bg-soft-primary { background-color: #eef2ff; }
@@ -175,5 +259,9 @@
     .btn-xs { padding: 0.25rem 0.6rem; font-size: 0.7rem; }
     .italic { font-style: italic; }
     .z-index-2 { z-index: 2; }
+    @media (prefers-reduced-motion: reduce) {
+        .admin-metric-card { transition: none; }
+        .admin-metric-card:hover { transform: none; }
+    }
 </style>
 @endsection

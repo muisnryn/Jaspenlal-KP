@@ -20,6 +20,7 @@ class Pendaftaran extends Model
         'total_biaya',
         'progress_level',
         'status',
+        'alasan_penolakan',
         // --- Kolom Dokumen Final Admin ---
         'file_ketetapan_halal',
         'tgl_sidang',
